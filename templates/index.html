@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>CCDML | Home</title>
+</head>
+
+<style>
+    .titlestyle {
+        background-color: #11c6e6;
+        color: white;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .title {
+        background-color: white;
+        text-align: center;
+    }
+
+    .formstyle {
+        padding: 20px 20px;
+    }
+
+    .wrapper {
+        text-align: center;
+        font-size: 45px;
+    }
+
+    .variable {
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+    }
+</style>
+
+<body>
+    <header class="bd-header  py-3 d-flex align-items-stretch border-bottom ">
+        <img src="../static/transparent background logo.png" style="height: 15%; width: 10%; padding-left: 15px;">
+    </header>
+
+    <main class="container size">
+        <div class="d-flex align-items-center p-3 my-3 rounded shadow-sm titlestyle">
+            <div class="lh-1">
+                <h1 class="h2 mb-0 text-black lh-1">CCDML - Cervical Cancer Diagnosis using Machine Learning</h1>
+            </div>
+        </div>
+
+        <div class="my-3 p-3 bg-body rounded shadow-sm" style="background-color: #f5f5f5 !important;">
+            <div class="container">
+                <form class="formstyle" action="{{url_for('model')}}" method="post">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Age</span>
+                                <input type="text" name="Age" class="form-control" required="required">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Number of sexual partners</span>
+                                <input type="text" name="Number of sexual partners" class="form-control" required="required">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">First sexual intercourse</span>
+                                <input type="text" name="First sexual intercourse" class="form-control" required="required">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Dx:Cancer</span>
+                                <input type="text" name="Dx:Cancer" class="form-control" required="required">
+                            </div>
+
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Dx:HPV</span>
+                                <input type="text" name="Dx:HPV" class="form-control"
+                                    required="required">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Dx</span>
+                                <input type="text" name="Dx" class="form-control" required="required">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Hinselmann</span>
+                                <input type="text" name="Hinselmann" class="form-control" required="required">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Schiller</span>
+                                <input type="text" name="Schiller" class="form-control" required="required">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Citology</span>
+                                <input type="text" name="Citology" class="form-control" required="required">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text variable">Biopsy</span>
+                                <input type="text" name="Biopsy" class="form-control" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <button type="submit" class="btn btn-primary "
+                            style="font-size: 20px;background-color: #11c6e6; border-color: #11c6e6; font-weight: bold;">Predict</button>
+                    </div>
+                </form>
+                <div class="my-3 p-3 bg-body rounded shadow-sm">
+                    <h4 class="border-bottom pb-2 mb-0" style="font-size: 30px;">Predictions</h4>
+                    <div class="d-flex text-muted pt-3">
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col-lg-6">
+                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                <div class="d-flex justify-content-between">
+                                    <strong class="text-gray-dark" style="font-size: 23px;">Model 1</strong>
+                                </div><br>
+                                <span class="d-block" style="font-size: 17px;">{{prediction1}}</span><br>
+                                <p style="font-size: 17px; text-align: justify;"><b>Business Insight: </b>{{insight1}}
+                                </p>
+                                <p style="font-size: 17px; text-align: justify;"><b>Business Recommendation:
+                                    </b>{{recommendation1}}</p>
+                            </div>
+                        </div> -->
+                        <div class="col-lg-12">
+                            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                <div class="d-flex justify-content-between">
+                                    <strong class="text-gray-dark" style="font-size: 23px;">Model Logistic Regression</strong>
+                                </div><br>
+                                <span class="d-block" style="font-size: 17px;">{{prediction3}}</span><br>
+                                <p style="font-size: 17px; text-align: justify;"><b>Cancer Predicted:
+                                </b>{{pred3}}</p>
+                                <p style="font-size: 17px; text-align: justify;"><b>Insight: </b>{{insight3}}
+                                </p>
+                                <p style="font-size: 17px; text-align: justify;"><b>Recommendation:
+                                    </b>{{recommendation3}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="text" style="text-align: center;">
+                        <h3>Analysis</h3>
+                    </div>
+                    <img src="{{url_for('static', filename='model_lr.png')}}" class="d-block w-100" alt="Model 1">
+                </div>
+                <div class="carousel-item">
+                    <div class="text" style="text-align: center;">
+                        <h3>Analysis</h3>
+                    </div>
+                    <img src="{{url_for('static', filename='model_lr.png')}}" class="d-block w-100" alt="Model 2">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="text" style="text-align: center;">
+                        <h3>Analysis</h3>
+                    </div>
+                    <img src="{{url_for('static', filename='cluster0.png')}}" class="d-block w-100" alt="Model 1">
+                </div>
+                <div class="carousel-item">
+                    <div class="text" style="text-align: center;">
+                        <h3>Analysis</h3>
+                    </div>
+                    <img src="{{url_for('static', filename='cluster1.png')}}" class="d-block w-100" alt="Model 2">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
